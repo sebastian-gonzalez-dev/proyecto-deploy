@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<main class="container">
+        <p class="display-3 text-center">Listado</p>
+
+    {% if tareas %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>AUTOR</th>
+                    <th>TITLE</th>
+                    <th>DESCRIPTION</th>
+                    <th>IMPORTANT</th>
+                    <!-- <th></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{tarea.id}}</td>
+                    <td>{{tarea.user}}</td>
+                    <td>{{tarea.title}}</td>
+                    <td>{{tarea.description}}</td>
+                    {% if tarea.important == True %}
+                        <td>Importante</td>
+                    {% else %}
+                        <td>No importante</td>
+                    {% endif %}
+                    <!-- <td>{{tarea.important}}</td> -->
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>No tienes tareas creadas</p>
+    {% endif %}
+</main>
+
+{% endblock %}
